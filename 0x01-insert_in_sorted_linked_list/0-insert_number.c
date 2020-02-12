@@ -1,5 +1,4 @@
 #include "lists.h"
-
 /**
  * insert_node - inserts numberinto a node
  * @head: head of linked list
@@ -11,9 +10,9 @@ listint_t *insert_node(listint_t **head, int number)
   listint_t *temp = *head, *new;
 
   new = malloc(sizeof(listint_t));
-  new->n = number;
   if (new == NULL)
     return (NULL);
+  new->n = number;
   if (*head == NULL)
     {
       new->next = *head;
