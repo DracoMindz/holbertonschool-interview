@@ -1,6 +1,7 @@
 #include "lists.h"
+
 /**
- * insert_node - inserts numberinto a node
+ * insert_node - inserts node into linked list
  * @head: head of linked list
  * @number: item to be inserted
  * Return: NUll or address of new node
