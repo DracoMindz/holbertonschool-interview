@@ -1,4 +1,4 @@
-#!/usr/bin/env python 3
+#!/usr/bin/env python3
 """Caluculate minimum number of operations to create string"""
 
 
