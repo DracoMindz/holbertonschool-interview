@@ -1,7 +1,7 @@
 #!/usr/bin/env python 3
 """Caluculate minimum number of operations to create string"""
 
-import math
+
 from math import sqrt
 
 
