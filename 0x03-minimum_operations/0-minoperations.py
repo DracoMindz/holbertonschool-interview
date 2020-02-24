@@ -10,7 +10,7 @@ def minOperations(n):
     numOps = 0
     m = 2
 
-    if n < 2:
+    if n <= 1:
         return 0
     for m in range(2, int(sqrt(n) + 1)):
         if (n % m == 0):
