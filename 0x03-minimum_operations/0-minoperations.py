@@ -14,9 +14,8 @@ def minOperations(n):
     if n <= 1:
         return 0
     for m in range(2, int(sqrt(n) + 1)):
-        if (n % m == 0):
+        while (n % m == 0):
             n /= m
-            numOps = numOps + m
-
-    numOps += int(n)
-    return numOps
+            numOps += m
+        if (n <= 1):
+            return numOps
