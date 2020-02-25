@@ -17,8 +17,6 @@ def minOperations(n):
         if (n % m == 0):
             n /= m
             numOps = numOps + m
-            m += 1
-        else:
-            m += 1
+
     numOps += int(n)
     return numOps
