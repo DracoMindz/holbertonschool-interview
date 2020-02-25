@@ -18,4 +18,5 @@ def minOperations(n):
             n /= m
             numOps += m
         if (n <= 1):
-            return numOps
+            break
+    return numOps
