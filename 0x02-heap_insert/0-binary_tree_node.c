@@ -5,6 +5,7 @@
  * binary_tree_node - creates tree node
  * @parent: Pointer to the parent node
  * @value: Value to put in the new node
+ *
  * Return: ponter to new node or NULL or failure
  **/
 
