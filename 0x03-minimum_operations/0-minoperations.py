@@ -9,7 +9,7 @@ def minOperations(n):
     """Find minimum sum of factors of number"""
 
     numOps = 0
-    m = 2
+    m = 0
 
     if n <= 1:
         return 0
@@ -17,6 +17,7 @@ def minOperations(n):
         if (n % m == 0):
             n /= m
             numOps = numOps + m
+            m += 1
         else:
             m += 1
     numOps += int(n)
