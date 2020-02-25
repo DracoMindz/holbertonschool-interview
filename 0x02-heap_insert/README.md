@@ -4,6 +4,7 @@ Specialization Machine Learning
 ## Data structures
 
 ### Binary Tree Node
+
 ```
 /**
  * struct binary_tree_s - Binary tree node
@@ -23,6 +24,7 @@ Specialization Machine Learning
  ```
 
 ### Max Binary Heap
+
 ```
 typedef struct binary_tree_s heap_t;
 ```
