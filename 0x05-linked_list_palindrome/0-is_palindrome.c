@@ -31,7 +31,7 @@ int got_pali(listint_t *nnode, listint_t **head)
 		return (1);
 
 	if
-		((nnode->n == (*head)->n) && (*head = (*head)->next))
+	   ((nnode->n == (*head)->n) && (*head = (*head)->next))
 		return (1);
 	return (0);
 }
