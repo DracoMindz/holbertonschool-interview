@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 /**
  * is_palindrome - singly linked list
@@ -20,14 +22,16 @@ int is_palindrome(listint_t **head)
  */
 int got_pali(listint_t *nnode, listint_t **head)
 {
+	int paliResult = 1;
+
 	if (!nnode)
 		return (1);
-	if ((!got_pali(nnode->next, head)))
+	paliResult = got_pali(nnode->next, head);
+	if (paliResult == 0)
 		return (1);
-	
+
 	if
 		((nnode->n == (*head)->n) && (*head = (*head)->next))
 		return (1);
-
 	return (0);
 }
