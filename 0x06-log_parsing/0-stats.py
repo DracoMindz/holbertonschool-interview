@@ -30,7 +30,7 @@ if __name__ == "__main__":
         """
         print stats
         """
-        print("Total file size: {}".format(totalSize[0]))
+        print("File size: {}".format(totalSize[0]))
         for m in sorted(status_codes.keys()):
             if status_codes[m] != 0:
                 print("{}: {}".format(m, status_codes[m]))
