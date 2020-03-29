@@ -3,6 +3,24 @@
 
 #include "palindrome.h"
 /**
+ * palindrome_check - check if integer is palindrome
+ *
+ * @n: number to be tested
+ *
+ * Return: 1 if yes, 0 if no
+ */
+int palindrome_check(unsigned long n)
+{
+	unsigned long revNum = 0;
+
+	if (n != 0)
+	{
+		revNum = (revNum * 10) + (n % 10);
+		palindrome_check(n / 10);
+	}
+	return (revNum);
+}
+/**
  * is_palindrome - check if integer is palindrome
  *
  * @n: number to be tested
@@ -11,16 +29,10 @@
  */
 int is_palindrome(unsigned long n)
 {
-	unsigned long revNum = 0;
-	unsigned long tempNum;
+	unsigned long revNum;
 
-	tempNum = n;
+	revNum = palindrome_check(n);
 
-	while (tempNum != 0)
-	{
-		revNum = (revNum * 10) + tempNum % 10;
-		tempNum = tempNum / 10;
-	}
 	if (n == revNum)
 	{
 		return (1);
