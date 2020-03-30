@@ -1,6 +1,4 @@
-#include <stdlib.h>
 #include <stdio.h>
-
 #include "palindrome.h"
 
 /**
@@ -16,14 +14,17 @@ int is_palindrome(unsigned long n)
 
 	temp = n;
 
-	if (temp != 0)
+	while (temp != 0)
 	{
 		revNum = (revNum * 10) + (temp % 10);
-		temp = temp / 10;
-
+		temp = (temp / 10);
 	}
 	if (n == revNum)
+	{
 		return (1);
+	}
 	else
+	{
 		return (0);
+	}
 }
