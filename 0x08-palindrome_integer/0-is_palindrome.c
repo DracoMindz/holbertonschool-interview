@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "palindrome.h"
 
 /**
@@ -25,5 +26,4 @@ int is_palindrome(unsigned long n)
 		return (1);
 	else
 		return (0);
-
 }
