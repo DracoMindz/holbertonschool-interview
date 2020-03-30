@@ -5,4 +5,4 @@
 
  ***0. Palindrome integer***
 
-Write a function that checks whether or not a given integer is a palindrome. Include a library. palindrome.h
+Write a function that checks whether or not a given integer is a palindrome. Include a header file. palindrome.h
