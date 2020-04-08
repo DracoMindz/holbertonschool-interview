@@ -11,13 +11,16 @@ def validUTF8(data):
     """
     index = 0
     for i, m in enumerate(data):
-        mask = m & 0xFF
         if (index == 0):
-            while( 1 << abs(7 - index)) & mask:
-                index += 1
-            if index == 1 or index > 4:
+            if (m >> 5) == 0b110:
+                index = 1
+            elif (m >> 4) == 0b1110:
+                index = 2
+            elif (m >> 3) == 0b11110:
+                index = 3
+            elif (m >> 7):
                 return False
-        elif index > 0:
+        elif (index > 0):
             if (m >> 6) != 0b10:
                 return False
             index -= 1
