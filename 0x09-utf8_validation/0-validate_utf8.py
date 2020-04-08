@@ -9,18 +9,19 @@ def validUTF8(data):
     """
     method determines valid UTF-8 encoding
     """
-    mask_utf8 = [0x0, 0x80, 0xE0, 0xF0, 0xF8]
-    b = [0x0, 0x80, 0xE0, 0xF0, 0xF8]
-    m = 0
-
-    while data:
-        for m in (4, 3, 2, 1):
-            if data[0] & mask_utf8[m] == b[m]:
-                break
-        if m == 0 or m > 4:
-            return False
-        for n in range(1, m):
-            if data[n] & 0xC0 != 0x80:
+    index = 0
+    for i, m in enumerate(data):
+        if (index == 0):
+            if (m >> 5) == 0b110:
+                index = 1
+            elif (m >> 4) == 0b1110:
+                index = 2
+            elif (m >> 3) == 0b11110:
+                index = 3
+            elif (m >> 7):
                 return False
-        data = data[m:]
-    return True
+        else:
+            if (m >> 6) != 0b10:
+                return False
+            index -= 1
+    return index == 0
