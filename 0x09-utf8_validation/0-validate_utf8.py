@@ -23,5 +23,5 @@ def validUTF8(data):
         else:
             if (m >> 6) != 0b10:
                 return False
-            index -= 1
+            index += 1
     return True
