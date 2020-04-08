@@ -10,7 +10,7 @@ def validUTF8(data):
     method determines valid UTF-8 encoding
     """
     index = 0
-    for  m in data:
+    for i, m in enumerate(data):
         if (index == 0):
             if (m >> 5) == 0b110:
                 index = 1
@@ -20,7 +20,7 @@ def validUTF8(data):
                 index = 3
             elif (m >> 7):
                 return False
-        else:
+        elif index > 0:
             if (m >> 6) != 0b10:
                 return False
             index -= 1
