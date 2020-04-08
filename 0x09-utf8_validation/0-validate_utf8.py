@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Write a method determines
-if a given data set represents valid UTF-8 encoding
+if a given data set represents valid UTF-8 encoding.
 """
 
 
