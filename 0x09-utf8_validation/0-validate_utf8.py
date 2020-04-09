@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Write a method determines
 if a given data set represents valid UTF-8 encoding
@@ -26,5 +26,5 @@ def validUTF8(data):
             index -= 1
         if index == 1 or index > 4:
             return False
-        index = max(index-1, 0)
-    return index == 0
+    return True
+
