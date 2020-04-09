@@ -27,4 +27,3 @@ def validUTF8(data):
         if index == 1 or index > 4:
             return False
     return True
-
