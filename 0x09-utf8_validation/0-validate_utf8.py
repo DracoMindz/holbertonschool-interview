@@ -26,4 +26,5 @@ def validUTF8(data):
             index -= 1
         if index == 1 or index > 4:
             return False
-    return True
+        index = max(index-1, 0)
+    return index == 0
