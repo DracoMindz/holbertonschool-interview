@@ -20,6 +20,8 @@ def validUTF8(data):
                 index = 3
             elif (m >> 7):
                 return False
+            index -= 1
+            continue
         elif (index > 0):
             if (m >> 6) != 0b10:
                 return False
