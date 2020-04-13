@@ -9,28 +9,31 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *temp = *head;
+	int palin;
 
-	return (got_pali(*head, &temp));
-
+	palin = got_pali(head, *head);
+	return (palin);
 }
+
 /**
- * got_pali - reverse checks if is palindrome
- * @head: address of pointer
- * @nnode: half to compare
+ * got_pali - checks if is palindrome
+ * @left: address of pointer
+ * @right: half to compare
  * Return: 1 if palindrome, 0 i f not palindrome
  */
-int got_pali(listint_t *nnode, listint_t **head)
+int got_pali(listint_t **left, listint_t *right)
 {
-	int paliResult = 1;
+	int ispal, ispalList;
 
-	if (!nnode)
+	if (right == NULL)
 		return (1);
-	paliResult = got_pali(nnode->next, head);
-	if (paliResult == 0)
-		return (1);
-
-	if (nnode->n == (*head)->n)
-		return (1);
-	return (0);
+	ispal = got_pali(left, right->next);
+	if (ispal == 0)
+		return (0);
+	if (right->n == (*left)->n)
+		ispalList = 1;
+	else
+		ispalList = 0;
+	*left = (*left)->next;
+	return (ispalList);
 }
