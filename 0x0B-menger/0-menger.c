@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 
 #include "menger.h"
 
 /**
  * menger - function draws a 2D Menger Sponge
- *
  * @level: level to draw
- *
- * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
 void menger(int level)
 {
