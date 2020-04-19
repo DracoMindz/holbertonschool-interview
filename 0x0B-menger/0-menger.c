@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 #include "menger.h"
@@ -12,7 +13,8 @@
  * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
 void menger(int level)
-{	int idx, row, col;
+{
+	long int idx, row, col, space;
 
 	if (level < 0)
 		return;
@@ -21,20 +23,29 @@ void menger(int level)
 		printf("#\n");
 		return;
 	}
-	for (idx = 1; level < 0; level--)
-	{
+	/* create grid */
+	for (idx = 1; level > 0; level--)
 		idx *= 3;
-	}
 	for (row = 1; row <= idx; row++)
 	{
 		for (col = 1; col <= idx; col++)
 		{
-			if (row % 3 == 1 && col % 3 == 1)
+			for (space = 1; space <= idx; space *= 3)
 			{
-				printf(" ");
+				if (row % space * 3 <= space * 2 &&
+					row % space * 3 >= space + 1 &&
+					/*compare row space check to col */
+					col % space * 3 <= space * 2 &&
+					col % space * 3 >= space + 1)
+				{
+					/* print space */
+					printf(" ");
+					break;
+				}
 			}
+			if (space > idx) /* insert # */
+				printf("#");
 		}
-		printf("#");
+		printf("\n");
 	}
-	printf("\n");
 }
