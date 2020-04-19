@@ -31,7 +31,7 @@ void menger(int level)
 		{
 			if (row % 3 == 1 && col % 3 == 1)
 			{
-				printf("*");
+				printf(" ");
 			}
 		}
 		printf("#");
