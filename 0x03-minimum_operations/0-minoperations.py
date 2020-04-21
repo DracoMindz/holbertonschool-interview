@@ -9,14 +9,16 @@ def minOperations(n):
     """Find minimum sum of factors of number"""
 
     numOps = 0
-    m = 0
+    # m = 0
 
     if n <= 1:
         return 0
     for m in range(2, int(sqrt(n) + 1)):
-        while (n % m == 0):
-            n /= m
+        while n % m == 0:
             numOps += m
-        if (n % m != 0):
-            numOps += 0
+            n /= m
+            if n <= 1:
+                continue
+    if n > 1:
+        numOps += int(n)
     return numOps
