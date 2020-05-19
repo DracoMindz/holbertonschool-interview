@@ -28,15 +28,6 @@ binary_tree_t *balance_tree(int *array, size_t size, avl_t *parent)
 	new_node->right = NULL;
 	new_node->left = NULL;
 
-	/* decrease the left side*/
-	if (size > 2)
-	{
-		new_node->left = balance_tree(array, ((size - 1) / 2), new_node);
-
-		/* check right side*/
-		if (new_node->right == NULL)
-			return (NULL);
-	}
 	/* increase the right side*/
 	if (size < 1)
 	{
@@ -49,6 +40,16 @@ binary_tree_t *balance_tree(int *array, size_t size, avl_t *parent)
 		}
 	}
 	return (new_node);
+	/* decrease the left side*/
+	if (size > 2)
+	{
+		new_node->left = balance_tree(array, ((size - 1) / 2), new_node);
+
+		/* check right side*/
+		if (new_node->right == NULL)
+			return (NULL);
+	}
+
 }
 
 /**
