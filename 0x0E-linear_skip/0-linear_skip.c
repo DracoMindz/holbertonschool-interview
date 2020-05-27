@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "search.h"
 
 
@@ -19,7 +16,7 @@ skiplist_t *print_val(skiplist_t *prevskip, skiplist_t *expskip, int value)
 			prevskip->index, expskip->index);
 	while (prevskip != expskip->next)
 	{
-		printf(" Value checked at index [%li] = [%i]\n",
+		printf("Value checked at index [%li] = [%i]\n",
 			prevskip->index, prevskip->n);
 		if (prevskip->n == value)
 			return (prevskip);

@@ -1,6 +1,9 @@
 #ifndef SEARCH_H
 #define SEARCH_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 /**
  * struct skiplist_s - Singly linked list with an express lane
@@ -25,6 +28,6 @@ skiplist_t *create_skiplist(int *array, size_t size);
 void free_skiplist(skiplist_t *list);
 void print_skiplist(const skiplist_t *list);
 skiplist_t *linear_skip(skiplist_t *list, int value);
-skiplist_t *print_val(skiplist_t *prevskip, skiplist_t *expskip, int value)
+/*skiplist_t *print_val(skiplist_t *prevskip, skiplist_t *expskip, int value)*/
 
 #endif
