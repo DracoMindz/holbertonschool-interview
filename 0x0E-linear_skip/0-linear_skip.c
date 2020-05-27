@@ -16,7 +16,7 @@ skiplist_t *print_val(skiplist_t *prevskip, skiplist_t *expskip, int value)
 			prevskip->index, expskip->index);
 	while (prevskip != expskip->next)
 	{
-		printf("Value checked at index [%li] = [%i]\n",
+		printf("Value checked at index [%li] = [%d]\n",
 			prevskip->index, prevskip->n);
 		if (prevskip->n == value)
 			return (prevskip);
@@ -51,7 +51,8 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 				nextskip = nextskip->next;
 			break;
 		}
-		printf("value checked at index[%lu] = [%d]\n", nextskip->index, nextskip->n);
+		printf("Value checked at index [%lu] = [%i]\n",
+			nextskip->index, nextskip->n);
 		/*traverse the list, overshoot value*/
 		if (nextskip->n >= value)
 			return (print_val(prevskip, nextskip, value));
