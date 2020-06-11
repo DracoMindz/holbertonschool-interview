@@ -2,7 +2,7 @@
 
 const request = require('request');
 const episodeId = process.argv[2];
-const movurl = 'https://swapi.hbtn.io/api/films/' + episodeId;
+const movurl = 'https://swapi-api.hbtn.io/api/films/' + episodeId;
 
 function listRightOrder(movurl) {
     request.get(movurl, (err, response, body) => {
