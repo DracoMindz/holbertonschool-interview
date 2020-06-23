@@ -33,7 +33,7 @@ void sift_down(int *array, size_t size, size_t root)
 
 /**
  * heap_sort - sorts an array of integers in ascending order
- * @array: list of int to be sorted
+ * @array: list of int to sort
  * @size: length of array
  *
  * Return: Always 0
