@@ -28,6 +28,8 @@ void sift_down(int *array, size_t size, size_t root)
 		array[root - 1] = key;
 		/* print after each swap */
 		print_array(array, size);
+		sift_down(array, interim + 1, root);
+
 	}
 }
 
@@ -42,11 +44,12 @@ void heap_sort(int *array, size_t size)
 {
 	size_t idx;
 	int temp;
-	size_t root = 0;
+	/*size_t root = 0;*/
 
-	for (idx = (size - 2) / 2; idx > 0; idx--)
+	/*for (idx = (size - 2) / 2; idx > 0; idx--)*/
+	for (idx = (size / 2); idx >= 1; idx--)
 	{
-		sift_down(array, size, root);
+		sift_down(array, size, idx);
 	}
 	for (idx = 0; idx < size; idx++)
 	{
@@ -54,6 +57,6 @@ void heap_sort(int *array, size_t size)
 		array[size - idx - 1] = array[0];
 		array[0] = temp;
 		print_array(array, size);
-		sift_down(array, size - idx - 1, root);
+		sift_down(array, size - idx - 1, 0);
 	}
 }
