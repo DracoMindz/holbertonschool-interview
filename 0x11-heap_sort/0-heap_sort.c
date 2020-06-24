@@ -44,7 +44,7 @@ void heap_sort(int *array, size_t size)
 	int temp;
 	size_t root = 0;
 
-	for (idx = (size - 2) / 2; idx >= 0; idx--)
+	for (idx = (size - 2) / 2; idx > 0; idx--)
 	{
 		sift_down(array, size, root);
 	}
