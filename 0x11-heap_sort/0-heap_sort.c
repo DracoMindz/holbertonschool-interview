@@ -1,3 +1,4 @@
+
 #include "sort.h"
 
 /**
@@ -6,9 +7,10 @@
  * @size: length of array
  * @root: num
  *
+ *
  * Return: Always 0
  */
-void sift_down(int *array, size_t size, size_t root)
+void sift_down(int *array,  size_t size, size_t root, size_t last)
 {
 	int interim = 0;
 	int key;
@@ -28,7 +30,7 @@ void sift_down(int *array, size_t size, size_t root)
 		array[root - 1] = key;
 		/* print after each swap */
 		print_array(array, size);
-		sift_down(array, interim + 1, root);
+		sift_down(array, size, 1, last);
 
 	}
 }
@@ -44,12 +46,13 @@ void heap_sort(int *array, size_t size)
 {
 	size_t idx;
 	int temp;
+	size_t hlast = size;
 	/*size_t root = 0;*/
 
 	/*for (idx = (size - 2) / 2; idx > 0; idx--)*/
 	for (idx = (size / 2); idx >= 1; idx--)
 	{
-		sift_down(array, size, idx);
+		sift_down(array, size, idx, hlast);
 	}
 	for (idx = 0; idx < size; idx++)
 	{
@@ -57,6 +60,6 @@ void heap_sort(int *array, size_t size)
 		array[size - idx - 1] = array[0];
 		array[0] = temp;
 		print_array(array, size);
-		sift_down(array, size - idx - 1, 0);
+		sift_down(array, size, 1, hlast);
 	}
 }
