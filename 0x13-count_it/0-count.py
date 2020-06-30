@@ -20,37 +20,36 @@ def count_words(subreddit, word_list, word_match={}, after=None):
     :word_match: list of word frequency
     :return: word, word_count
     """
- # get list of hot articles
- if not hot_list
-     return None
- try:
-     req = request.get('https://www.reddit.com/r/{}/hot.json?limit=100&&'
-                           'after={}".format(subreddit, a"fter), allow_redirects=False,'
-                           'headers={'User-Agent':"morton"}).json()
+    # get list of hot articles
+    if not word_list:
+        return None
+    try:
+        req_data = request.get('https://www.reddit.com/r/{}/hot.'
+                               'json?limit=100&&'
+                               'after={}'.format(subreddit, after),
+                               headers={'User-Agent': "morton"})
+        req = req_data.json()
 
-# parse list
-     # word_match is a list of words from word_list same length
-     if word_match == {}:
-          for wi in word_list:
-              word_match[wi] = 0
-
-     # parse the words in the data list
-     for pos in range(len(req['data']['children'])):
-         parWord_list = (req['data']['children'][pos]['data']['title']).split())
-
-        # get the words from the word list
-        for word in parWord_list:
-            # apply this index wi for comparison
-            # put all words in lowercase for comparison
+        # parse list
+        # word_match is a list of words from word_list same length
+        if word_match == {}:
             for wi in word_list:
-                if wi.lower = word.lower:
-                # if the words match add to word_match at location
-                    word_match[wi] += 1
-# order list
+                word_match[wi] = 0
+        after = req['data']['after']
 
+        # parse the words in the data list
+        for pos in range(len(req['data']['children'])):
+            parWord_list = (req['data']['children'][pos]
+                            ['data']['title']).split()
 
-# print list
-
-
- except:
-     pass
+            # get the words from the word list
+            for word in parWord_list:
+                # apply this index wi for comparison
+                # put all words in lowercase for comparison
+                for wi in word_list:
+                    if wi.lower = word.lower:
+                        word_match[wi] += 1
+        # order list
+        # print list
+    except:
+        pass
