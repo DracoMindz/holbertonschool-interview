@@ -4,8 +4,10 @@ Recursive function that queries the Reddit API,
 parses the title of all hot articles, and prints a sorted
 count of given keywords.
 """
+import collections
 import requests
 import sys
+from requests import get
 
 
 def count_words(subreddit, word_list, word_match={}, after=None):
@@ -27,7 +29,10 @@ def count_words(subreddit, word_list, word_match={}, after=None):
         req_data = request.get('https://www.reddit.com/r/{}/hot.'
                                'json?limit=100&&'
                                'after={}'.format(subreddit, after),
+                               allow_redirects=False,
                                headers={'User-Agent': "morton"})
+        if response.status_code != 200:
+            return
         req = req_data.json()
 
         # parse list
@@ -47,9 +52,27 @@ def count_words(subreddit, word_list, word_match={}, after=None):
                 # apply this index wi for comparison
                 # put all words in lowercase for comparison
                 for wi in word_list:
-                    if wi.lower = word.lower:
+                    if wi.lower == word.lower:
                         word_match[wi] += 1
         # order list
-        # print list
-    except:
+        if after is None:
+            # choice here use dict or OrderedDict
+            # OrderedDict keeps the order may be easier to iterate
+            wordMatch_Dict = collections.OrderedDict(sorted(word_match.items(),
+                                                            key=lambda x: x[1],
+                                                            reverse=True))
+            flag = 0
+            for word, w_count in wordMatch_Dict.items():
+                if w_count == 0:
+                    flag += 1
+                else:
+                    print("{}: {}".format(word, w_count))
+            if flag == len(wordMatch_Dict):
+                print('/n')
+            # recursive part
+            else:
+                count_words(subreddit, word_list, word_match={}, after=None)
+
+    # print list
+    except Exception:
         pass
