@@ -10,8 +10,7 @@
  */
 size_t binary_tree_height(heap_t *tree)
 {
-	size_t rightSide = 0;
-	size_t leftSide = 0;
+	size_t right, left;
 
 	if (!tree)
 	{
@@ -20,13 +19,13 @@ size_t binary_tree_height(heap_t *tree)
 	if (tree)
 	{
 		/* if not branch to both sides return 1*/
-		if (!tree->leftSide && !tree->rightSide)
+		if (!tree->left && !tree->right)
 			return (1);
-		if (tree->rightSide)
-			rightSide += binary_tree_height(tree->right);
-		if (tree->leftSide)
-			leftSide += binary_tree_height(tree->leftSide);
-		return (leftSide > rightSide ? leftSide : rightSide);
+		if (tree->left)
+			left += binary_tree_height(tree->left);
+		if (tree->right)
+			right += binary_tree_height(tree->right);
+		return (left > right ? left : right);
 	}
 }
 
