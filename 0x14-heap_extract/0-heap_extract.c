@@ -22,11 +22,11 @@ size_t binary_tree_height(heap_t *tree)
 		if (!tree->left && !tree->right)
 			return (1);
 		if (tree->left)
-			left += binary_tree_height(tree->left);
+			left = binary_tree_height(tree->left) + 1;
 		if (tree->right)
-			right += binary_tree_height(tree->right);
-		return (left > right ? left : right);
+			right = binary_tree_height(tree->right) + 1;
 	}
+	return (left > right ? left : right);
 }
 
 /**
@@ -36,7 +36,6 @@ size_t binary_tree_height(heap_t *tree)
  * @node: pointer to a node from the tree
  * @height: height of the tree
  * @h_layer: tree layer, layer increases
- *
  * Return: void
  */
 void binary_tree_preorder(
@@ -45,10 +44,9 @@ void binary_tree_preorder(
 	if (!tree)
 		return;
 	if (height == h_layer)
-		*node = tree   /* if the node pointer is the same as the tree next layer*/
-	layer++;
+		*node = tree;  /* if the node pointer is the same as the tree next layer*/
+	h_layer++;
 
-	/* traversing */
 	if (tree->left)
 		/* binary_tree_preorder(tree->left, func); */
 		binary_tree_preorder(tree->left, node, height, h_layer);
@@ -58,25 +56,24 @@ void binary_tree_preorder(
 
 /**
  *  heap_extract - extracts root node of a binary heap
- *
  * @root: double pointer to the root node of heap
  * Return: 0 on success, error code on failure
  */
 int heap_extract(heap_t **root)
 {
-	int rt_value;
-	int tp_value;
-	size_t h_level = NULL;
+	int rt_value, tp_value;
+	size_t h_layer = 0;
 	heap_t *temp, *node;
 
 	if (!root || !*root)
 		return (0);
 	temp = *root;
 	rt_value = temp->n;
-	/* root node must be freed and replaced w/ last*/
+
 	if (!temp->left && !temp->right)
 	{
-		*root = NULL && free(temp);
+		*root = NULL;
+		free(temp);
 		return (rt_value);
 	}
 	binary_tree_preorder(temp, &node, binary_tree_height(temp), h_layer);
