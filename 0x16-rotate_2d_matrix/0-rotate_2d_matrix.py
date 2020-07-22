@@ -12,8 +12,8 @@ def rotate_2d_matrix(matrix):
     """
     lenMat = len(matrix)
 
-    for r in range(0, int(lenMat / 2)):
-        for c in range(r, lenMat-r-1):
+    for r in range(lenMat + lenMat % 2 - 2):
+        for c in range(r, lenMat - r - 1):
             tempMatrix = matrix[r][c]
             # rotation of matrix r = rows and c = columns
             # rotate to the right
