@@ -31,8 +31,5 @@ ___
 
 Note:
 ```
-Working with size_t in this instance proved to be a challenge. Kept getting errors having to do with type agreement. It became necessary to find a way to wor around the size_t and still get the correct result from the code.
-
-Reading the main until you understand what the process is is important. Originally I included the
-print_array function in the merge_sort file.  After reading the main and noting how the functions were called I realized it was better to have a separate file that included the print_array function. In the merge_sort file the print_array was not being used by any function. In the main it is called separately and without reference to the merge_sort file.
+There is a solution to this using mallloc and free.
 ```
