@@ -32,4 +32,6 @@ ___
 Note:
 ```
 There is a solution to this using mallloc and free.
+
+After the function ran: correctly sorting the array and putting the contents of the array in ascending order; I reread the main. I added printf and print_array statements to match the output of the main. I ran the function again to verify the output I was reciving coinsided with the output in the main.
 ```
