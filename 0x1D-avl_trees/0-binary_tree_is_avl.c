@@ -1,7 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include "binary_trees.h"
+
+
+/**
+ * bt_height - measures heigh of binary search tree
+ *
+ *@tree: tree to be measured
+ *@height: height of tree
+ * Return: height of tree
+ */
+int bt_height(const binary_tree_t *tree, int height)
+{
+	size_t left = 0, right = 0;
+
+	if (tree == NULL)
+		return (height);
+	if (tree->left)
+		left += bt_height(tree->left, height) + 1;
+	if (tree->right)
+		right += bt_height(tree->right, height) + 1;
+	/* difference between heights cannot be more than one */
+	if (left - right > 1)
+		return (-1);
+	return (left > right ? left : right);
+}
 
 /**
  * tree_is_bst - measures heigh of binary search tree
@@ -10,7 +35,7 @@
  * @num: value
  * Return: height of tree
  */
-int tree_is_bst(const binary_tree_t *tree, int *num)
+size_t tree_is_bst(const binary_tree_t *tree, int *num)
 {
 	int minbin = INT_MIN;
 
@@ -25,35 +50,11 @@ int tree_is_bst(const binary_tree_t *tree, int *num)
 	*num = tree->n;
 	/* return value on the right side */
 	return (tree_is_bst(tree->right, num));
-
-
-}
-
-/**
- * bt_height - measures heigh of binary search tree
- *
- *@tree: tree to be measured
- * Return: height of tree
- */
-int bt_height(const binary_tree_t *tree)
-{
-	size_t left = 0, right = 0;
-
-	if (!tree)
-		return (1);
-	if (tree)
-	{
-		if (tree->left)
-			left += bt_height(tree->left) + 1;
-		if (tree->right)
-			right += bt_height(tree->right) + 1;
-	}
-	return (left > right ? left : right);
 }
 
 
 /**
- * binary_tree_is_avi - checks if a bunary tree is valid
+ * binary_tree_is_avl - checks if a bunary tree is valid
  *
  * @tree: Pointer to the node to print
  *
