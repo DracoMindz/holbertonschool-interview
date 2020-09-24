@@ -2,6 +2,10 @@
 #define _BINARY_TREES_H_
 
 #include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -22,11 +26,12 @@ struct binary_tree_s
 typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s avl_t;
 
-void binary_tree_print(const binary_tree_t *);
-int binary_tree_is_avl(const binary_tree_t *tree);
-size_t tree_is_bst(const binary_tree_t *tree, int *num);
-int bt_height(const binary_tree_t *tree, int height);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int val);
+void binary_tree_print(binary_tree_t const *tree);
+int binary_tree_is_avl(binary_tree_t const *tree);
+size_t tree_is_bst(binary_tree_t const *tree, int *num);
+int bt_height(binary_tree_t const *tree, int height);
+
 
 
 #endif /* _BINARY_TREES_H_ */

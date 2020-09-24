@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
 #include "binary_trees.h"
 
 
@@ -12,9 +8,9 @@
  *@height: height of tree
  * Return: height of tree
  */
-int bt_height(const binary_tree_t *tree, int height)
+int bt_height(binary_tree_t const *tree, int height)
 {
-	size_t left = 0, right = 0;
+	int left = 0, right = 0;
 
 	if (tree == NULL)
 		return (height);
@@ -24,6 +20,8 @@ int bt_height(const binary_tree_t *tree, int height)
 		right += bt_height(tree->right, height) + 1;
 	/* difference between heights cannot be more than one */
 	if (left - right > 1)
+		return (-1);
+	if (left - right < -1)
 		return (-1);
 	return (left > right ? left : right);
 }
@@ -35,14 +33,15 @@ int bt_height(const binary_tree_t *tree, int height)
  * @num: value
  * Return: height of tree
  */
-size_t tree_is_bst(const binary_tree_t *tree, int *num)
+size_t tree_is_bst(binary_tree_t const *tree, int *num)
 {
 	int minbin = INT_MIN;
 
-	if (tree == NULL)
-		return (1);
+
 	if (num == NULL)  /* num in minimum */
 		num = &minbin;
+	if (tree == NULL)
+		return (1);
 	if (!tree_is_bst(tree->left, num))
 		return (0); /* return 0 if nothing to the left */
 	if (tree->n <= *num)  /* if less than num at *num */
@@ -60,12 +59,12 @@ size_t tree_is_bst(const binary_tree_t *tree, int *num)
  *
  * Return: 1 if valid, 0 if not valid
  */
-int binary_tree_is_avl(const binary_tree_t *tree)
+int binary_tree_is_avl(binary_tree_t const *tree)
 {
 	/* check NULL cases */
 	if (tree == NULL)
 		return (0);
-	if (tree_is_bst(tree, NULL))
+	if (!tree_is_bst(tree, NULL))
 		return (0);
 	if (bt_height(tree, 0) < 0)
 		return (0);
