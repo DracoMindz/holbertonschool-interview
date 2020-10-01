@@ -1,69 +1,68 @@
 #include "holberton.h"
 
 /**
- * star_check - check for '*', get string w/o '*'
+ * star_check - check for symbol, get string w/o symbol
  * @string: string to check
  *
  * Return: pointer to string w/o star
  */
 char *star_check(char *string)
- {
-	 if (*string != '*')
-	 	return (string);
-	return (star_check(string + 1));
- }
-/**
- *
- *
- *
- *
- */
-int check_strings(char *str, char *thing1, char *thing2 )
 {
-	/*star check*/
-	if(*thing1 == '*')
-	{
-		thing1 = star_checker(thing1);
-		thing2 = thing1
-	}
+	if (*string != '*')
+		return (string);
+	return (star_check(string + 1));
+}
 
-	if (*thing2 == *thing1)
+/**
+ * twin_check - compare to strings for samness
+ *
+ * @str: string to compare
+ * @thingone: pattern to compare
+ * @thingtwo: string
+ * Return: compared strings
+ */
+int twin_check(char *str, char *thingone, char *thingtwo)
+{
+	if (*thingone == '*')
 	{
-			/* check Null cases */
-		if (*str == '\0' && *thing1 == '\0')
+		thingone = star_check(thingone);
+		thingtwo = thingone;
+	}
+	if (*thingtwo == *thingone)
+	{
+		if (*str == '\0' && *thingone == '\0')
 			return (1);
-		if (*str == '\0' && *thing1 != '\0')
+		if (*str == '\0' && *thingone != '\0')
 			return (0);
-		if (*thing1 == *thing2)
-			return (check_strings(str + 1, thing1 + 1, thing2));
-		return (check_strings(str + 1, thing1, thing2));
+		if (*thingone == *thingtwo)
+			return (twin_check(str + 1, thingone + 1, thingtwo));
+		return (twin_check(str + 1, thingone, thingtwo));
 	}
 	else
 	{
-
-		if (*str != *thing1)
+		if (*str != *thingone)
 		{
-			if (!thing2)
-				return (0)
-			return (check_strings(str, thing2, thing2));
+			if (!thingtwo)
+				return (0);
+			return (twin_check(str, thingtwo, thingtwo));
 		}
-
-		if (*thing1 == '\0')
+		if (*thingone == '\0')
 			return (1);
-		if (thing2 == '\0')
+		if (thingtwo == '\0')
 			return (1);
-		return (check_strings(str +1, thing1 + 1, thing2));
+		return (twin_check(str + 1, thingone + 1, thingtwo));
 	}
 }
+
 /**
  * wildcmp - compare two strings
- *
- * @s1: string to match
- * @s2: pattern to match
+ * @s_one: string to match
+ * @s_two: pattern to match
  * Return: 1 if same 0 if not
  */
-int wildcmp(char *s1, char *s2)
+int wildcmp(char *s_one, char *s_two)
 {
-	return(check_strings(s1, s2, s2));
+
+	return (twin_check(s_one, s_two, s_two));
 }
 
