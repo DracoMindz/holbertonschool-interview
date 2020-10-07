@@ -12,10 +12,13 @@ def pascal_triangle(n):
     :param n: integers
     :return: Pascal's Trangle
     """
-    trow = [1]
-    y = [0]
+    trow = []
 
-    for x in range(n):
-        print(trow)
-        trow = [left + right for left, right in zip(trow + y, y + trow)]
-    return n > 1
+    for x in range(1, n + 1):
+        trow.append([1] * x)
+    for y in range(2, n):
+        numrow = trow[y]
+        oldrow = trow[y - 1]
+        for z in range(1, len(numrow) - 1):
+            numrow[z] = oldrow[z - 1] + oldrow[z]
+    return trow
