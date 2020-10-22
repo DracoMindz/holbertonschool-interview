@@ -10,7 +10,7 @@
  * @words: the array of words all holderstrings must be a concatenation of
  * @nb_words: the num of elements in the array words
  * @n: holds the address at which to store the num of lelements in array
- * Return: array storing each index in s at which holderstring is found or NULL
+ * Return: array storing each index in s at where holderstring is found or NULL
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
