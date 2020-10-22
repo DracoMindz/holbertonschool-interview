@@ -12,13 +12,14 @@ int matchpattern(char const *regexp, char const *pattern)
 {
 
 	/* NULL cases */
-	if (regexp[0] == '\0')
+	if (regexp[0] == '\0' && pattern[0] == '\0')
 		return (1);
-
+	if (pattern[0] == '\0' && regexp[0] != '\0')
+		return (0);
 	/* incase of symbols */
 	if (regexp[1] == '*')
 		return (matchsym(regexp[0], regexp + 2, pattern));
-	if (*pattern != '\0' && (regexp[0] == '.' || regexp[0] == *pattern))
+	if (*pattern == '.' || *regexp == *pattern)
 		return (matchpattern(regexp + 1, pattern + 1));
 	return (0);
 }
@@ -47,6 +48,7 @@ int matchsym(int sym, char const *regexp, char const *pattern)
  */
 int regex_match(char const *str, char const *pattern)
 {
+
 	do {
 		if (matchpattern(str, pattern))
 			return (1);
