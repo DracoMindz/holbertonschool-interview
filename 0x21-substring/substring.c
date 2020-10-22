@@ -39,12 +39,12 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 					}
 				}
 				else if (checkstr == NULL)
-					continue;
+					i++;
 			}
 			if (checkstr != NULL)
-				memcpy(&checkstr[i], &holder, sizeof(holder));
+				memset(checkstr, '.', (strlen(words[0])));
 			else
-				continue;
+				i++;
 		}
 		if (stringlen != 0 && dict != 0)
 			string[count++] = i;
