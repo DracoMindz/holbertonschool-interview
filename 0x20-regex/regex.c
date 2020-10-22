@@ -1,18 +1,18 @@
 #include <stddef.h>
 #include "regex.h"
 
-
 /**
-* matchpattern - find match
+* matchpattern - match pattern to string
 * @regexp: string to check against pattern
 * @pattern: pattern
 *
+* Return: string
 */
 int matchpattern(char const *regexp, char const *pattern)
 {
 
 	/* NULL cases */
-	if (regexp[0] == '\0' && pattern[0] == '\0')
+	if (regexp[0] == '\0')
 		return (1);
 
 	/* incase of symbols */
@@ -28,6 +28,7 @@ int matchpattern(char const *regexp, char const *pattern)
  * @regexp: string to check
  * @pattern: pattern
  *
+ * Return: string
  */
 int matchsym(int sym, char const *regexp, char const *pattern)
 {
@@ -42,8 +43,13 @@ int matchsym(int sym, char const *regexp, char const *pattern)
  * @str: string to check
  * @pattern: pattern
  *
+ * Return: string
  */
 int regex_match(char const *str, char const *pattern)
 {
-	return (matchpattern(str, pattern));
+	do {
+		if (matchpattern(str, pattern))
+			return (1);
+	} while (*pattern++ != '\0');
+	return (0);
 }

@@ -5,7 +5,7 @@
 
 #define TEST_MATCH(s, p)    do {\
     {\
-        int res = regex_match(s, p);\
+        int res = regex_match(s, p);
         printf("%s -> %s = %d\n", s, p, res);\
     }\
 } while(0)
