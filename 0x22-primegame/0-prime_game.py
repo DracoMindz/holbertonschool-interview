@@ -20,7 +20,7 @@ def isWinner(x, nums):
 
             if (win % 2 == 0):
                 return "Ben"
-            if (win % 2 != 0):
+            if (win % 2 != 0 or numlen == 1):
                 return "Maria"
             if len(nums) == 0:
                 return None
