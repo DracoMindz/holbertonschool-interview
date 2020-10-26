@@ -19,8 +19,8 @@ def isWinner(x, nums):
             win = (integersOdd / 3) * 2
 
             if (win % 2 == 0):
-                return "Maria"
-            if (win % 2 != 0):
                 return "Ben"
+            if (win % 2 != 0):
+                return "Maria"
             if len(nums) == 0:
                 return None
