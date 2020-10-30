@@ -39,7 +39,7 @@ def isWinner(x, nums):
     if primeNums == 0:
         return None
     if primeNums >= 1:
-        if primeNums % 2 == 0:
-            return "Ben"
-        else:
+        if primeNums % 2 == 1:
             return "Maria"
+        else:
+            return "Ben"
