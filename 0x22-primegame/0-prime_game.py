@@ -4,6 +4,29 @@ Prime Game
 """
 
 
+def countPrimeIn_list(numlist):
+    """
+    Count the number of prime numbers in list
+    :param nums: list of integers
+    :return: number of neg integers
+    """
+
+    primeCount = []
+
+    for number in numlist:
+        if number == 2:
+            primeCount.append(number)
+        elif number >= 2:
+            prime = True
+            for index in range(2, number):
+                if number % index == 0:
+                    prime = False
+                    break
+            if prime:
+                primeCount.append(number)
+    return len(primeCount)
+
+
 def isWinner(x, nums):
     """
     Determine the winner of each game
@@ -12,15 +35,11 @@ def isWinner(x, nums):
     :param n: numbers
     :return: the Winner of the round
     """
-    for i in range(x):
-        for n in range(x):
-            numlen = len(nums)
-            integersOdd = (int(numlen / 2))
-            win = (integersOdd / 3) * 2
-
-            if (win % 2 == 0):
-                return "Ben"
-            if (win % 2 != 0 or numlen == 1):
-                return "Maria"
-            if len(nums) == 0:
-                return None
+    primeNums = countPrimeIn_list(nums)
+    if primeNums == 0:
+        return None
+    if primeNums >= 1:
+        if primeNums % 2 == 0:
+            return "Ben"
+        else:
+            return "Maria"
